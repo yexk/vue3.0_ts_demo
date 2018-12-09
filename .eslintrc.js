@@ -16,7 +16,8 @@ module.exports = {
     'vue/script-indent': [
       'warn',
       2
-    ]
+    ],
+    'space-before-function-paren': ['error', 'never'],
   },
   parserOptions: {
     parser: 'typescript-eslint-parser'

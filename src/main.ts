@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import i18n from './i18n'
+import i18n from './locales'
 
+import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/common.less'
 
 Vue.config.productionTip = false

@@ -3,33 +3,91 @@
     <h1>{{ msg }}</h1>
     <h1 @click="aaa()">{{ url }}</h1>
     <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
+      For a guide and recipes on how to configure / customize this project,
+      <br>check out the
+      <img src="@/assets/xiaojiangsi.jpg" alt srcset>
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
     <h3>Installed CLI Plugins</h3>
     <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest" target="_blank" rel="noopener">unit-jest</a></li>
+      <li>
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
+          target="_blank"
+          rel="noopener"
+        >babel</a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript"
+          target="_blank"
+          rel="noopener"
+        >typescript</a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
+          target="_blank"
+          rel="noopener"
+        >eslint</a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest"
+          target="_blank"
+          rel="noopener"
+        >unit-jest</a>
+      </li>
     </ul>
     <h3>Essential Links</h3>
     <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
+      <li>
+        <a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a>
+      </li>
+      <li>
+        <a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a>
+      </li>
+      <li>
+        <a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a>
+      </li>
+      <li>
+        <a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a>
+      </li>
+      <li>
+        <a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a>
+      </li>
     </ul>
     <h3>Ecosystem</h3>
     <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
+      <li>
+        <a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a>
+      </li>
+      <li>
+        <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/vuejs/vue-devtools#vue-devtools"
+          target="_blank"
+          rel="noopener"
+        >vue-devtools</a>
+      </li>
+      <li>
+        <a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a>
+      </li>
+      <li>
+        <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a>
+      </li>
     </ul>
+    <el-date-picker
+      popper-class="abc"
+      v-model="value13"
+      type="daterange"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期"
+      :default-time="['00:00:00', '23:59:59']"
+    ></el-date-picker>
+    <div @mousemove="changeTest()">鼠标移动：{{ test }}</div>
   </div>
 </template>
 
@@ -38,10 +96,17 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
-  private url: string = "sdfasfasdfasf";
+  @Prop() msg!: string
+  url: string = 'sdfasfasdfasf'
+  value13: string = ''
+  test: number = 1
 
-  aaa (): void {
+  changeTest(obj: any): void {
+    console.log(arguments)
+    this.test++
+  }
+
+  aaa(): void {
     window.alert(this.url)
   }
 }
@@ -62,5 +127,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.abc {
+  background-color: #f00;
 }
 </style>

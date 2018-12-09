@@ -1,13 +1,16 @@
 <template>
   <div class="left">
     <el-menu
+      class="el-menu-verticalel"
       :router="true"
-      default-active="2"
+      default-active="1"
+      :collapse="isCollapse"
       @open="handleOpen"
       @close="handleClose"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b">
+      :background-color="BgColor"
+      :text-color="textColor"
+      :active-text-color="activeTextColor"
+    >
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
@@ -43,16 +46,27 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Model } from 'vue-property-decorator'
 
+@Component
 export default class Left extends Vue {
-  @Prop() private msg!: string;
-  public handleOpen (key: string, keyPath: string): void {
+  @Prop() textColor!: string
+  @Prop() activeTextColor!: string
+  @Prop({ type: String, default: '#545c64' }) BgColor!: string
+
+  isCollapse: boolean = true
+
+  handleOpen(key: string, keyPath: string): void {
     console.log(key, keyPath)
   }
-  public handleClose (key: string, keyPath: string): void {
+  handleClose(key: string, keyPath: string): void {
     console.log(key, keyPath)
   }
 }
-
 </script>
+<style lang="less" scoped>
+.el-menu-vertical:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+}
+</style>

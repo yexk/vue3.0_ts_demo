@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   devServer: {
     proxy: {
@@ -7,7 +9,6 @@ module.exports = {
       }
     }
   },
-
   pluginOptions: {
     i18n: {
       locale: 'en',

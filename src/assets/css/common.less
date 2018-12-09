@@ -1,6 +1,19 @@
 @charset "utf-8";
+@import 'base.less';
 
+html,
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.fix {
+  .clearfix();
+}
+.ye-container {
+  background-color: @ye-gray;
+  .ye-main {
+    background-color: @ye-white;
+  }
 }
