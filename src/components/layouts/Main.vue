@@ -1,15 +1,21 @@
 <template>
   <el-container class="ye-container">
     <el-header>
-      <Header :activeTextColor="activeTextColor" :textColor="textColor"></Header>
+      <Header/>
     </el-header>
     <el-container>
-      <el-aside>
-        <Left :activeTextColor="activeTextColor" :textColor="textColor"></Left>
+      <el-aside :style="{'width':width}" width="250px">
+        <el-scrollbar style="height: 100%;">
+          <Left :activeTextColor="activeTextColor" :textColor="textColor"/>
+        </el-scrollbar>
       </el-aside>
-      <el-main class="ye-main">
-        <Breadcrumb :propsData="crumb"></Breadcrumb>
-        <router-view></router-view>
+      <el-main>
+        <Breadcrumb :propsData="crumb"/>
+        <div class="ye-main">
+          <el-scrollbar style="height: 100%;">
+            <router-view/>
+          </el-scrollbar>
+        </div>
       </el-main>
     </el-container>
   </el-container>
@@ -29,11 +35,10 @@ import Breadcrumb from './Breadcrumb.vue'
   }
 })
 export default class Main extends Vue {
-  data(): any {
-    return {
-      textColor: '#ffffff',
-      activeTextColor: '#ffd04b'
-    }
+  textColor: string = '#ffffff'
+  activeTextColor: string = '#ffd04b'
+  get width(): string {
+    return this.$store.state.leftMenu ? 'auto' : '250px'
   }
 
   get crumb(): Object {
@@ -46,7 +51,4 @@ export default class Main extends Vue {
 </script>
 
 <style lang="less" scoped>
-.el-header {
-  padding: 0;
-}
 </style>

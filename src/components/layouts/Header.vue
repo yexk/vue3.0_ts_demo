@@ -1,33 +1,24 @@
 <template>
   <div class="header">
-    <el-menu
-      :router="true"
-      :default-active="activeIndex2"
-      mode="horizontal"
-      @select="handleSelect(this, $event)"
-      :background-color="BgColor"
-      :text-color="textColor"
-      :active-text-color="activeTextColor"
-    >
-      <el-menu-item index="/">Yexk-管理系统</el-menu-item>
-      <el-menu-item index="/about">处理中心</el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">我的工作台</template>
-        <el-menu-item index="2-1">首页</el-menu-item>
-        <el-menu-item index="2-2">{{ $t('message') }}</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-        <el-submenu index="2-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="2-4-1">选项1</el-menu-item>
-          <el-menu-item index="2-4-2">选项2</el-menu-item>
-          <el-menu-item index="2-4-3">选项3</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="3" @click="aaa($event)">消息中心</el-menu-item>
-      <el-menu-item index="4">
-        <a href="https://www.ele.me" target="_blank">订单管理{{activeIndex}}</a>
-      </el-menu-item>
-    </el-menu>
+    <el-row>
+      <el-col :span="6">
+        <div class="logo">
+          <div>
+            <img src="@/assets/logo.png" alt srcset>
+          </div>
+          <div>{{ logoStr }}</div>
+        </div>
+      </el-col>
+      <el-col :span="12" :offset="6">
+        <el-button type="link">橙色</el-button>
+        <el-switch
+          v-model="switchMenu"
+          active-color="#13ce66"
+          inactive-color="#ff4949"
+          @change="test"
+        ></el-switch>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -36,26 +27,45 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class Header extends Vue {
-  @Prop() textColor!: string
-  @Prop() activeTextColor!: string
-  @Prop({ type: String, default: '#545c64' }) BgColor!: string
-
-  aa: number = 1121
-  activeIndex: string = '4'
-  activeIndex2: string = '1'
-
-  url: string = 'sadfafasf'
-  aaa(obj: any): void {
-    console.log(this.$store.state.count)
-    this.$store.commit('increment')
-    console.log(obj)
+  get logoStr(): string {
+    return process.env.PRODUCT_NAME ? process.env.PRODUCT_NAME : 'Yexk'
   }
-
-  handleSelect(): void {
-    console.log(arguments)
+  get switchMenu(): boolean {
+    return this.$store.state.leftMenu
+  }
+  test(): void {
+    this.$store.commit('switchMenu')
   }
 }
 </script>
 
 <style lang="less" scoped>
+@import '~@/assets/css/base.less';
+.header {
+  background: @ye-gray-header;
+  color: @ye-white;
+  height: 100%;
+  .logo {
+    height: 100%;
+    div {
+      font-size: @fz-large;
+      float: left;
+      height: 100%;
+      line-height: @line-height-computed;
+    }
+    div:nth-child(2) {
+      padding-left: 10px;
+    }
+  }
+  .logo img {
+    height: 60px;
+    max-width: 120px;
+  }
+  .el-col {
+    height: 60px;
+  }
+  .el-col:nth-child(2) {
+    border: 1px solid #000;
+  }
+}
 </style>

@@ -2,10 +2,12 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import mutations from './muattions'
 import actions from './actions'
+import { State } from './State'
 
 Vue.use(Vuex)
 
-const state = {
+const state: State = {
+  leftMenu: false,
   login: false
 }
 
