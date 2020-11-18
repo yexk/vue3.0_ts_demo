@@ -6,7 +6,7 @@ export default defineComponent({
     return (
       <>
         <div class="home">
-          <img alt="Vue logo" src="~@/assets/logo.png" />
+          <img alt="Vue logo" src={require('@/assets/logo.png')} />
           <HelloWorld msg="Yexk Home" />
         </div>
       </>

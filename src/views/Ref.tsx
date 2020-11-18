@@ -1,5 +1,4 @@
 import { defineComponent, ref } from "vue";
-import Echarts from "@/components/Echarts";
 
 interface T {
   abc: number;
@@ -19,7 +18,7 @@ export default defineComponent({
         return 123123
       }
     })
-    console.log(count.value.test());
+    count.value.abc++
     return {
       count
     }
@@ -30,6 +29,7 @@ export default defineComponent({
         <h1>{this.name} About</h1>
         <div>
           {this.count.abc}
+          <br />
           {this.count.test()}
         </div>
       </>

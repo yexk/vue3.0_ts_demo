@@ -1,6 +1,6 @@
 import { defineComponent, nextTick } from "vue";
 import echarts from "echarts";
-import "./s.scss";
+import style from "./s.module.scss";
 
 export default defineComponent({
     name: "Echarts",
@@ -31,8 +31,8 @@ export default defineComponent({
         return () => (
             <>
                 <h1>echarts: {props.msg}</h1>
-                <div class="echart" id="echarts" ></div>
-                <hr/>
+                <div class={style.echart} id="echarts" ></div>
+                <hr />
             </>
         )
     },
