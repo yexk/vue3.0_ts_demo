@@ -9,7 +9,8 @@ export default defineComponent({
         <div id="nav">
           <router-link to="/">Home</router-link> |
           <router-link to="/about">About</router-link> |
-          <router-link to="/ref">Ref</router-link>
+          <router-link to="/ref">Ref</router-link> |
+          <router-link to="/apidemo">Api</router-link>
         </div>
         <router-view />
       </>
